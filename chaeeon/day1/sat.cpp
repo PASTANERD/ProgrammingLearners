@@ -6,10 +6,8 @@ int student1(vector<int> answers){
     int count = 0;
     int index = 0;
     int cheat[5] = {1,2,3,4,5};
-    // printf("student1 start.\n");
     for(vector<int>::iterator itr = answers.begin(); itr != answers.end() ;itr++){
         if(index>=5) index = 0;
-        // printf("%d, %d\n", *itr, cheat[index]);
         if(*itr == cheat[index]) count++;
         index++;
     }
@@ -23,7 +21,6 @@ int student2(vector<int> answers){
     int cheat[8] = {2,1,2,3,2,4,2,5};
     for(vector<int>::iterator itr = answers.begin(); itr != answers.end() ;itr++){
         if(index>=8) index = 0;
-        // printf("%d, %d\n", *itr, cheat[index]);
         if(*itr == cheat[index]) count++;
         index++;
     }
@@ -37,7 +34,6 @@ int student3(vector<int> answers){
     int cheat[10] = {3,3,1,1,2,2,4,4,5,5};
     for(vector<int>::iterator itr = answers.begin(); itr != answers.end() ;itr++){
         if(index>=10) index = 0;
-        // printf("%d, %d\n", *itr, cheat[index]);
         if(*itr == cheat[index]) count++;
         index++;
     }

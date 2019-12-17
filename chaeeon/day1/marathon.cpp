@@ -4,7 +4,7 @@
 using namespace std;
 
 string solution(vector<string> participant, vector<string> completion) {
-    string answer = "";   
+    string answer = "";
     vector<string> athletes = participant;
     
     for(vector<string>::iterator itr = completion.begin() ; itr != completion.end() ; itr++){
