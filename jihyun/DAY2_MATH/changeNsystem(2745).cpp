@@ -19,7 +19,7 @@ int main(){
         long long k;
         
         if(n[i]>='A')
-            k = n[i]-'A' + 10;
+            k = n[i]-'A' + 10; // Z - A + 10 --> 35
         else
             k = n[i]-'0';
         

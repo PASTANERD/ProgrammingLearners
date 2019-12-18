@@ -62,7 +62,7 @@ int main(){
 
     cin >> N >> B;
     cin.ignore();
-    
+
     int decimal = 0;
     for(int i = 0 ; i < N.size() ; i++){
         decimal = decimal*B + exchange(N[i]);
@@ -72,3 +72,15 @@ int main(){
 
     
 }
+
+/*
+
+N = ABCD
+N[0] = A
+N[1] = B
+
+A*16^3 + B*16^2 + C*16^1 + D*16^0
+
+(((A+0)*16 + B)*16 + C)*16 + D
+
+*/
