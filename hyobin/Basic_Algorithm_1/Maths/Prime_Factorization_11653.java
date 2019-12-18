@@ -1,5 +1,9 @@
 package Maths;
 
+//N의 소인수분해 결과를 한 줄에 하나씩 오름차순으로 출력한다.
+//입력 72
+//출력 2 2 2 3 3
+
 import java.util.Scanner;
 
 public class Prime_Factorization_11653 {

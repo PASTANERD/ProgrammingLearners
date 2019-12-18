@@ -26,9 +26,11 @@ public class PrimeNumber_Plus_6588 {
 		
 		int M = (int) Collections.max(mylist);
 		boolean[] count = new boolean[M+1];
+		ArrayList<Integer> prime = new ArrayList<Integer>();
 		
 		for(int i=2; i<M+1; i++) {
 			if( count[i] == false ){
+				prime.add(i);
 				for (int j=i*2; j<M+1; j+=i) {
 					count[j]=true;
 				}
@@ -36,20 +38,14 @@ public class PrimeNumber_Plus_6588 {
 		}
 		
 		for (int i=0; i<mylist.size(); i++) {
-			int nmax=0;
-			int b=0;
 			int n = (int) mylist.get(i);
-			for(int a=2; a<M+1; a++) {
-				if(count[a]==false && a<n-1) {
-					if(count[n-a]==false) {
-						nmax = (nmax>(n-a)-a) ? nmax : (n-a)-a;
-						b = (nmax>(n-a)-a) ? b : (n-a);
-					}
+			for(Integer a : prime ) {
+				if(count[n-a]==false) {
+					System.out.println( n + " = " + a + " + " + (n-a));
+					break;
 				}
 			}
-			System.out.println(n+" = " + (n-b) + " + " + b);
 		}
-		
 	}
 
 }
