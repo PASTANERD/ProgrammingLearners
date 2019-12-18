@@ -12,14 +12,10 @@ public class ChangeNotation2_2745 {
 		long B = scanner.nextInt();
 		long S = 0;
 		
-		for(int i=N.length()-1; i>=0 ; i--) {
-			
+		for(int i=N.length()-1; i>=0 ; i--) {	
 			int n = (int)(N.charAt(i));
-			System.out.println(n);
 			if( n >= 65 ) n = n-55;
 			else n = n-48;
-			System.out.println(n);
-			System.out.println(Math.pow(B, N.length()-i-1));
 			S+= n*(Math.pow(B, N.length()-i-1));
 		}
 		System.out.println(S);
