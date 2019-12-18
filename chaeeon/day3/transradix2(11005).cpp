@@ -140,24 +140,13 @@ int main(){
     
     stack<char> transradix;
     string answer;
-    if(N%B == 0){
-            while(N != 0){
+    
+    while(N > 0){
             lsb = N%B;
             N = N/B;
             transradix.push(exchange(lsb));
-        }
-    }
-    else {
-        while(N != 1){
-            lsb = N%B;
-            N = N/B;
-            transradix.push(exchange(lsb));
-        }
-        transradix.pop();
-        transradix.push(exchange(N));
     }
     
-
     while(!transradix.empty()){
         answer.push_back(transradix.top());
         transradix.pop();
