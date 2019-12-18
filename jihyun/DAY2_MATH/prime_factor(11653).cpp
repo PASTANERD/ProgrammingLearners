@@ -1,5 +1,4 @@
 #include <iostream>
-#include <vector>
 
 using namespace std;
 
@@ -9,29 +8,15 @@ int main(){
     
     long long n;
     cin >> n;
+    int p = 2;
     
-    //n이하의 소수 찾기
-    vector<int> prime;
-    bool check[n+1];
-    fill_n(check, n+1, false);
-    for(int i = 2; i <= n; i++){
-        if(!check[i]){
-            prime.push_back(i);
-            for(long long j = i+i; j <= n; j*=i)
-                check[j] = true;
-        }
-    }
-    
-    long long q = n;
-    int i = 0;
-    
-    while(q!=1){
-        int p = prime[i];
-        if(q % p == 0){
+    while(n!=1){
+        if(n % p == 0){
             cout << p << '\n';
-            q /= p;
+            n /= p;
         }
         else
-            i++;
+            p++;
     }
 }
+
