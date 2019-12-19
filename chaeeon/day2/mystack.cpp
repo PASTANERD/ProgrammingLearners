@@ -1,3 +1,10 @@
+/*
+*   Baekjoon Online Judge
+*   https://www.acmicpc.net/problem/
+*   
+*   Solved by chaeeon lim
+*   pastanerd0416@gmail.com
+*/
 
 #include <stdlib.h>
 #include <iostream>
