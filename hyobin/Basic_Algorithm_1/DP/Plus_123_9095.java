@@ -12,11 +12,10 @@ public class Plus_123_9095 {
 		D[0] = 1;
 		D[1] = 1;
 		D[2] = 2;
-		D[3] = 4;
 		for(int i=0; i<T; i++) {
 			int n = scanner.nextInt();
-			System.out.println(D[n-1] + D[n-2] + D[n-3]);
+			D[n] = D[n-1] + D[n-2] + D[n-3];
+			System.out.println(D[n]);
 		}
 	}
-
 }
