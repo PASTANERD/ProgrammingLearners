@@ -23,6 +23,8 @@ public class EasyStairs_10844 {
 	            dp[i][j] = (dp[i - 1][j - 1] + dp[i - 1][j + 1]) % 1000000000;
 	        }
 	    }
+	    
+	    
 	 
 	    long sum = 0;
 	    for (int i = 0; i < 10; i++) {
