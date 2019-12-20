@@ -12,10 +12,14 @@ public class Plus_123_9095 {
 		D[0] = 1;
 		D[1] = 1;
 		D[2] = 2;
-		for(int i=0; i<T; i++) {
+		D[3] = 4;
+		for(int i=0; i< T; i++) {
 			int n = scanner.nextInt();
-			D[n] = D[n-1] + D[n-2] + D[n-3];
 			System.out.println(D[n]);
 		}
+	}
+	
+	public static void topdown(int n) {
+		
 	}
 }
