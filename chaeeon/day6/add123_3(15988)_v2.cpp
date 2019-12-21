@@ -14,7 +14,7 @@
 #include <iostream>
 
 using namespace std;
-incompleted
+
 
 int main(){
     ios_base::sync_with_stdio(false);
@@ -43,7 +43,6 @@ int main(){
         }
         cout << memo[index] << '\n';
     }
-    
-    delete memo;
+    delete[] memo;
     return 0;
 }

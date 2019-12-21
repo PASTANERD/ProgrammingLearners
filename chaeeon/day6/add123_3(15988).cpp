@@ -44,3 +44,14 @@ int main(){
     }
     return 0;
 }
+
+/*
+
+memo[4] = memo[3] + memo[2] + memo[1]
+memo[5] = memo[4] + memo[3] + memo[2]
+
+..
+memo[8] = 7 + 6+ 5
+
+
+*/
