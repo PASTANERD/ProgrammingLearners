@@ -1,6 +1,6 @@
 /*
 *   Baekjoon Online Judge
-*   https://www.acmicpc.net/problem/9095
+*   https://www.acmicpc.net/problem/15988
 *   
 *   Solved by chaeeon lim
 *   pastanerd0416@gmail.com
@@ -13,18 +13,9 @@
 
 #include <iostream>
 
-using namespace std; 
+using namespace std;
 
 int *memo;
-int nums(int N){
-    if(N == 0) return 1;
-    // if(N == 1) return 1;
-    if(memo[N] > 0) return memo[N];
-    memo[N] = nums(N-1);
-    if(N > 1) memo[N] += nums(N-2);
-    if(N > 2) memo[N] += nums(N-3);
-    return memo[N];
-}
 
 int main(){
     ios_base::sync_with_stdio(false);
@@ -41,11 +32,15 @@ int main(){
         memo = new int[cases+1];
         for(int j = 0; j <= cases ; j++) memo[j] = 0;
 
-        cout << nums(cases) << '\n';
+        memo[0] = 1;
+        memo[1] = 1;
+        if(cases > 1) memo[2] = memo[0] + memo[1];
+        for(int k = 3; k <= cases; k++){
+            memo[k] = (memo[k-1] + memo[k-2] + memo[k-3])% 1000000009;
+        }
+        cout << memo[cases]  << '\n';
 
         delete memo;
     }
-    
-
     return 0;
 }

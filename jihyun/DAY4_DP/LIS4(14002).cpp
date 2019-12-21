@@ -8,15 +8,21 @@ using namespace std;
 int *a;
 int *d;
 int *v;
+int last = 0;
 
 void go(int p){
     if(p == 0){
         cout << a[p] << ' ';
         return;
     }
-    
-    go(v[p]);
-    cout << a[p] << ' ';
+    if(p == last){
+        go(v[p]);
+        cout << a[p];    
+    }
+    else{
+        go(v[p]);
+        cout << a[p] << ' ';
+    }
 }
 
 int main(){
@@ -29,7 +35,7 @@ int main(){
     a = new int[n];
     d = new int[n];
     v = new int[n];
-    int ans = 0, last = 0;
+    int ans = 0;
     
     for(int i=0; i<n; i++){
         v[i] = 0;

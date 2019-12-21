@@ -1,6 +1,6 @@
 /*
 *   Baekjoon Online Judge
-*   https://www.acmicpc.net/problem/9095
+*   https://www.acmicpc.net/problem/15988
 *   
 *   Solved by chaeeon lim
 *   pastanerd0416@gmail.com
@@ -23,7 +23,7 @@ int nums(int N){
     memo[N] = nums(N-1);
     if(N > 1) memo[N] += nums(N-2);
     if(N > 2) memo[N] += nums(N-3);
-    return memo[N];
+    return memo[N] % 100000009;
 }
 
 int main(){
