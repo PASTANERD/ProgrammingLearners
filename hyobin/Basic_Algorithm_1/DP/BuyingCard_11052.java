@@ -8,24 +8,24 @@ public class BuyingCard_11052 {
 	//n은 1, 2, 3 ... n이고, P[n]은 가격
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
  
-        int[] arr = new int[n + 1];
-        int[] d = new int[n + 1];
+        int[] P = new int[n + 1];
+        int[] D = new int[n + 1];
  
         for (int i = 1; i <= n; i++)
-            arr[i] = sc.nextInt();
+            P[i] = scanner.nextInt();
  
         for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= i; j++) {
-                d[i] = Math.max(d[i], d[i - j] + arr[j]);
+                D[i] = Math.max(D[i], D[i - j] + P[j]);
             }
         }
  
-        System.out.println(d[n]);
+        System.out.println(D[n]);
  
-        sc.close();
+        scanner.close();
 	}
 
 }
