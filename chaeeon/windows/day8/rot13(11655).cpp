@@ -1,6 +1,6 @@
 /*
 *   Baekjoon Online Judge
-*   https://www.acmicpc.net/problem/10820
+*   https://www.acmicpc.net/problem/11655
 *   
 *   Solved by chaeeon lim
 *   pastanerd0416@gmail.com
@@ -17,7 +17,6 @@ int main(){
 
     string N;
     
-    // cin >> N;
     getline(cin, N);
     
     for(string::iterator itr = N.begin() ; itr != N.end() ; itr++){

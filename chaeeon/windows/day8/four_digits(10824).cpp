@@ -1,6 +1,6 @@
 /*
 *   Baekjoon Online Judge
-*   https://www.acmicpc.net/problem/2743
+*   https://www.acmicpc.net/problem/10824
 *   
 *   Solved by chaeeon lim
 *   pastanerd0416@gmail.com
@@ -16,10 +16,8 @@ int main(){
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    string N;
-    
-    cin >> N;
-    cout << N.length();
-
+    string A, B, C, D;
+    cin >> A >> B >> C >> D;
+    cout << stoll((A+B))+stoll((C+D)) << '\n';
     return 0;
 }
