@@ -6,36 +6,79 @@
 *   pastanerd0416@gmail.com
 */
 
-/*
- *  best(N):    best cases to have maximum wines for number of N wines
- *  best(N) = max(cases[N][0], cases[N][1], cases[N][2]) 
- *  cases[N][C]: 
- *  cases[N][0] = max(cases[N-1], cases[N-1][1], cases[N-1][2])
- *  cases[N][1] = cases[N-1][0] + wine[N]
- *  cases[N][2] = cases[N-1][1] + wine[N]
- *  
- */
 
 #include <iostream>
 
 using namespace std;
+
+class Node{
+    private:
+        char character;
+        Node* left_child;
+        Node* right_child;
+    public:
+
+        Node(char data){
+            character = data;
+            left_child = new Node();
+            right_child = new Node();
+        }
+        void set_Node(Node* left, Node* right){
+            left_child = left;
+            right_child = right;
+        }
+        Node* get_left_child(){
+            return left_child;
+        }
+
+        Node* get_right_child(){
+            return right_child;
+        }
+};
+
+class PostfixTree{
+    private:
+        Node* thisnode;
+    public:
+        PostfixTree(){
+            thisnode = new Node();
+        }
+        void pushNode(char character){
+            
+            thisnode = new Node(character);
+
+        }
+        Node getNode(){
+            return *thisnode;
+        }
+};
 
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    int N;
+    string N;
     cin >> N;
     cin.ignore();
 
-    int *triangle = new int[(N+1)*N/2];
-
-    for(int i = 0 ; i < (N+1)*N/2 ; i++){
-        cin >> triangle[i];
-        cout << triangle[i] << ' ';
-    }
-
-
     return 0;
 }
+
+/*
+ * A*B+C    => CAB*+
+ *              +
+ *           *     C
+ *        A     B
+ *       
+ * 
+ * A+B*C    => ABC*+
+ *              +
+ *          A       *
+ *              B       C
+ * 
+ * A*(B+C)  => ABC+*
+ *              *
+ *          A       +
+ *              B       C
+ */
