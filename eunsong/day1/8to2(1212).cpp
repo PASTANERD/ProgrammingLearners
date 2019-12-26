@@ -1,8 +1,6 @@
 #include <iostream>
 #include <string>
-#include <cstdlib>
 
-#define MAX 333334
 
 using namespace std;
 
@@ -31,26 +29,20 @@ void trans(char a){
 }
 
 int main(){
-    try{
-        string eightNum;
-        cin >> eightNum;
+    string eightNum;
+    cin >> eightNum;
 
-        int num = atoi(eightNum.c_str());
-        if(num >= MAX)
-            throw num;
-
-        int len;
-        len = eightNum.length();
-        for(int i = 0; i < len; i++){
-            if(i == 0)
-                first(eightNum[i]);
-            else
-                trans(eightNum[i]);
-        }
-        cout << endl;
-    }catch(int excp){
-        cout << "[error: out of bound]: " << excp << endl;  
+    int num = atoi(eightNum.c_str());
+    
+    int len;
+    len = eightNum.length();
+    for(int i = 0; i < len; i++){
+        if(i == 0)
+            first(eightNum[i]);
+        else
+            trans(eightNum[i]);
     }
+    cout << endl;
 
 
     return 0;

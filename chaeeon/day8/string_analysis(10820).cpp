@@ -30,7 +30,6 @@ int main(){
             else if(*itr == ' ') space++;
         }
         cout << small << " " << capital << " " << number << " " << space << '\n';
-    }
-    
+    }   
     return 0;
 }
