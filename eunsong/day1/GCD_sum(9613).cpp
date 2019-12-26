@@ -15,6 +15,9 @@ int GCDSum(int a, int b){
 }
 
 int main(){
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+
     int N;
     cin >> N;
 
@@ -31,7 +34,7 @@ int main(){
                 sum += GCDSum(arr[i], arr[j]);
             }
         }
-        cout << sum << endl;
+        cout << sum << "\n";
     }
     
     return 0;
