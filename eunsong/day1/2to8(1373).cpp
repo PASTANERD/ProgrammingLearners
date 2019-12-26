@@ -1,34 +1,27 @@
 #include <iostream>
 
 using namespace std;
-
-#define MAX 1000000
-
 int main(){
-    try{
-         int twoNum;
-        cin >> twoNum;
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
 
-        if(twoNum >= MAX)
-            throw twoNum;
+    int twoNum;
+    cin >> twoNum;
 
-        int count = 1;
-        int eightNum = 0;
-        
-        while(twoNum > 0){
-            if(twoNum % 10 == 1){
-                eightNum += count;
-                //cout << eightNum << endl;
-            }
-            count = count * 8;
-            twoNum = twoNum / 10;
-            //cout << "count:" << count << endl;
+    
+    int count = 1;
+    int eightNum = 0;
+    
+    while(twoNum > 0){
+        if(twoNum % 10 == 1){
+            eightNum += count;
         }
-
-        cout << eightNum << endl;
-    }catch(int excp){
-        cout << "[error: out of bound]: " << excp << endl;  
+        count = count * 8;
+        twoNum = twoNum / 10;
     }
+
+    cout << eightNum << "\n";
+   
 
 
     return 0;
