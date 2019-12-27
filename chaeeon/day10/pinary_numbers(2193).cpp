@@ -1,6 +1,6 @@
 /*
 *   Baekjoon Online Judge
-*   https://www.acmicpc.net/problem/17103
+*   https://www.acmicpc.net/problem/2193
 *   
 *   Solved by chaeeon lim
 *   pastanerd0416@gmail.com
@@ -18,7 +18,7 @@ int main(){
     int N;
     cin >> N;
     
-    int *pinary = new int[N];
+    unsigned long *pinary = new unsigned long[N];
 
     pinary[0] = 1;
     pinary[1] = 1;

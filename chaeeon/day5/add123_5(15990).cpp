@@ -6,40 +6,15 @@
 *   pastanerd0416@gmail.com
 */
 
-/*
- *  nums(N): number of cases make N with combinations of 1, 2 and 3
- *  nums(N) = nums(N-1) + nums(N-2) + nums(N-3)
- */
 
 #include <iostream>
-
+#define MAX_ARRAY 100000+1
 using namespace std; 
 
-int *memo;
-int nums(int N, int adj){
-    if(memo[N] > 0) return memo[N];
-    if(adj == -1){
-        // if(N <= 0) return 0;
-        // if(N == 1) return 1;
-        // if(N == 2) return 1;
-        memo[N] = nums(N-1, 1) + nums(N-2, 2) + nums(N-3, 3);
-    }
-    else if(adj == 1){
-        if(N <  0) return 0;
-        if(N == 0) return 1;
-        if(N > 0) memo[N] = nums(N-2, 2) + nums(N-3, 3);
-    }
-    else if (adj == 2){
-        if(N <  1) return 0;
-        if(N == 1) return 1;
-        if(N > 1) memo[N] = nums(N-1, 1) + nums(N-3, 3);
-    }
-    else{
-        if(N <  2) return 0;
-        if(N == 2) return 1;
-        if(N > 2) memo[N] = nums(N-1, 1) + nums(N-2, 2);
-    }
-    return memo[N] % 1000000009;
+int **memo = new int*[MAX_ARRAY];
+
+int sums(int N){
+    return memo[N][0] + memo[N][1] + memo[N][2];
 }
 
 int main(){
@@ -47,20 +22,48 @@ int main(){
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    int N;
-    cin >> N;
+    int T, N;
+    cin >> T;
     cin.ignore();
 
-    int cases;
-    for(int i = 0 ; i < N ; i++){
-        cin >> cases;
-        memo = new int[cases+1];
-        for(int j = 0; j <= cases ; j++) memo[j] = 0;
-
-        cout << nums(cases, -1) << '\n';
-
-        delete memo;
+    for(int i = 0 ; i < MAX_ARRAY ; i++) {
+        memo[i] = new int[3];
+        fill_n(memo[i], 3, -1);
     }
+
+    memo[1][0] = 1;
+    memo[1][1] = 0;
+    memo[1][2] = 0;
+    memo[2][0] = 0;
+    memo[2][1] = 1;
+    memo[2][2] = 0;
+    memo[3][0] = 1;
+    memo[3][1] = 1;
+    memo[3][2] = 1;
+
+    for(int i = 0 ; i < T ; i++){
+        
+        cin >> N;
+        if(sums(N) > 0) cout << sums(N) << '\n';
+        else{
+                for(int j = 4; j <= N; j++){
+                    if(memo[j][0] == -1) {
+                        memo[j][0] = memo[j-1][1] + memo[j-1][2];
+                    }
+                    if(memo[j][1] == -1) {
+                        memo[j][1] = memo[j-1][0] + memo[j-1][2];   
+                    }
+                    if(memo[j][2] == -1){
+                        memo[j][2] = memo[j-1][1] + memo[j-1][0];
+                    } 
+            }
+        }
+        cout << sums(N) << '\n';
+
+        
+    }
+
+    delete[] memo;
     
 
     return 0;

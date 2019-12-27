@@ -17,7 +17,9 @@ class Node{
         Node* left_child;
         Node* right_child;
     public:
-
+        Node(){
+            
+        }
         Node(char data){
             character = data;
             left_child = new Node();
@@ -25,6 +27,12 @@ class Node{
         }
         void set_Node(Node* left, Node* right){
             left_child = left;
+            right_child = right;
+        }
+        void set_left_Node(Node* left){
+            left_child= left;
+        }
+        void set_right_Node(Node* right){
             right_child = right;
         }
         Node* get_left_child(){
@@ -44,7 +52,7 @@ class PostfixTree{
             thisnode = new Node();
         }
         void pushNode(char character){
-            
+
             thisnode = new Node(character);
 
         }
