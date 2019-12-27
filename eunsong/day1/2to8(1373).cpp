@@ -14,7 +14,7 @@ int main(){
         ios_base:: sync_with_stdio(false);
         cin.tie(nullptr);
 
-        int twoNum;
+        long long twoNum;
         cin >> twoNum;      // twoNum = 11001100
 
         int count = 1;      // num of position
