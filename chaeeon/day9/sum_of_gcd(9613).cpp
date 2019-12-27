@@ -16,7 +16,6 @@ int get_gcd(int A, int B){
         return A;
     }
     else return get_gcd(B, A%B);
-
 }
 
 int main(){

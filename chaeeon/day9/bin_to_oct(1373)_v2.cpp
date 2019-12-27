@@ -19,8 +19,21 @@ int main(){
     string Binary;
     cin >> Binary;
 
-    int bins = stoi(Binary);
-    
+    int decimal = 0;
+    while(Binary.length() > 0){
+        decimal = decimal*2 + (Binary.front() - '0');
+        Binary = Binary.substr(1);
+    }
+    cout << "decimal : " << decimal << '\n';
+    string oct;
+
+    while(decimal > 0){
+        oct.push_back(decimal % 8 + '0');
+        decimal /= 8;
+    }
+    cout << "r_oct : " << oct << '\n';
+    for(string::iterator itr = oct.end()-1 ; itr != oct.begin()-1 ; itr--) cout << *itr;
+
     
     return 0;
 }
