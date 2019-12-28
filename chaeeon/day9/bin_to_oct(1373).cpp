@@ -27,30 +27,35 @@ int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    string Binary;
-    cin >> Binary;
-
-    string three;
-    if(Binary.length() % 3 > 0){
-        three = Binary.substr(0, Binary.length()%3);
-        if(three == "0" || three ==  "00") cout << '0';
-        else if(three == "1" || three ==  "01") cout << '1';
-        else if(three == "10") cout << '2';
-        else if(three == "11") cout << '3';
-        else cout << '?';
-        Binary = Binary.substr(Binary.length()%3);
-    }
-    while(Binary.length() > 0){
-        three = Binary.substr(0, 3);
-        Binary = Binary.substr(3);
-        cout << bin2oct(three);
-    }
+    string binary;
+    cin >> binary;
     
+    int init = binary.length() % 3;
+
+    if(init == 1){
+        if(binary[0] == '0') cout << '0';
+        else if(binary[0] == '1') cout << '1';
+        else cout << '?';
+    }
+    else if(init == 2){
+        if(binary[0] == '0' && binary[1] == '0') cout << '0';
+        else if(binary[0] == '0' && binary[1] == '1') cout << '1';
+        else if(binary[0] == '1' && binary[1] == '0') cout << '2';
+        else if(binary[0] == '1' && binary[1] == '1') cout << '3';
+        else cout << '?';
+    }
+    string three = "";
+    
+    for(string::iterator itr = binary.begin() + init ; itr != binary.end() ; itr += 3){
+    
+        three.push_back(*itr);
+        three.push_back(*(itr+1));
+        three.push_back(*(itr+2));
+        
+        cout << bin2oct((three));
+        
+        three.erase();
+    }
+
     return 0;
 }
-
-/**
- * input : 11001100
- * 11 001 100
- * 3    1   4 
- */
