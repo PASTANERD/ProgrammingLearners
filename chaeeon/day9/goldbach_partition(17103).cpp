@@ -8,6 +8,8 @@
 
 
 #include <iostream>
+#include <vector>
+#define MAX_ARRAY 1000000
 
 using namespace std;
 
@@ -15,16 +17,33 @@ int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int N;
-    cin >> N;
-    
-    int *pinary = new int[N];
+    vector<int> primes;
+    bool check[MAX_ARRAY+1];
 
-    pinary[0] = 1;
-    pinary[1] = 1;
-    for(int i = 2 ; i < N; i++) pinary[i] = pinary[i-1] + pinary[i-2];
+    fill_n(check, MAX_ARRAY+1, true);
+
+    for(int i = 2 ; i <= MAX_ARRAY ; i++ ){
+        if(check[i]){
+            for(int j = i+1 ; j <= MAX_ARRAY ; j++) if(j%i == 0) check[j] = false;
+            primes.push_back(i);
+        }
+    }
+
+    int T;
+    cin >> T;
     
-    cout << pinary[N-1];
+    int N;
+    int count = 0;
+    for(int i = 0 ; i < T ; i++){
+        cin >> N;
+        for(vector<int>::iterator itr = primes.begin() ; *itr <= N/2; itr++){
+            if(check[N-(*itr)]) count++;
+        }
+        
+        cout << count << '\n';
+        count = 0;
+    }
+
 
     return 0;
 }

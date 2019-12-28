@@ -6,15 +6,16 @@
 *   pastanerd0416@gmail.com
 */
 
-
 #include <iostream>
+
 #define MAX_ARRAY 100000+1
+#define DIVIDER 1000000009
 using namespace std; 
 
-int **memo = new int*[MAX_ARRAY];
+long long **memo = new long long*[MAX_ARRAY];
 
-int sums(int N){
-    return memo[N][0] + memo[N][1] + memo[N][2];
+long long sums(int N){
+    return (memo[N][0] + memo[N][1] + memo[N][2]) % DIVIDER;
 }
 
 int main(){
@@ -27,7 +28,7 @@ int main(){
     cin.ignore();
 
     for(int i = 0 ; i < MAX_ARRAY ; i++) {
-        memo[i] = new int[3];
+        memo[i] = new long long[3];
         fill_n(memo[i], 3, -1);
     }
 
@@ -46,25 +47,22 @@ int main(){
         cin >> N;
         if(sums(N) > 0) cout << sums(N) << '\n';
         else{
-                for(int j = 4; j <= N; j++){
-                    if(memo[j][0] == -1) {
-                        memo[j][0] = memo[j-1][1] + memo[j-1][2];
-                    }
-                    if(memo[j][1] == -1) {
-                        memo[j][1] = memo[j-1][0] + memo[j-1][2];   
-                    }
-                    if(memo[j][2] == -1){
-                        memo[j][2] = memo[j-1][1] + memo[j-1][0];
-                    } 
+            for(int j = 4; j <= N; j++){
+                if(memo[j][0] == -1) {
+                    memo[j][0] = (memo[j-1][1] + memo[j-1][2]) % DIVIDER;
+                }
+                if(memo[j][1] == -1) {
+                    memo[j][1] = (memo[j-2][0] + memo[j-2][2]) % DIVIDER;   
+                }
+                if(memo[j][2] == -1){
+                    memo[j][2] = (memo[j-3][1] + memo[j-3][0]) % DIVIDER;
+                } 
             }
+            cout << sums(N) << '\n';
         }
-        cout << sums(N) << '\n';
-
-        
     }
 
     delete[] memo;
     
-
     return 0;
 }

@@ -26,11 +26,12 @@ int main(){
     cin >> N;
     cin.ignore();
 
+    memo = new int[10+1];
+    for(int j = 0; j <= 10+1 ; j++) memo[j] = 0;
+    
     int cases;
     for(int i = 0 ; i < N ; i++){
         cin >> cases;
-        memo = new int[cases+1];
-        for(int j = 0; j <= cases ; j++) memo[j] = 0;
 
         memo[0] = 1;
         memo[1] = 1;

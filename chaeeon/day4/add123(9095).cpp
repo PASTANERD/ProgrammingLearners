@@ -18,7 +18,6 @@ using namespace std;
 int *memo;
 int nums(int N){
     if(N == 0) return 1;
-    // if(N == 1) return 1;
     if(memo[N] > 0) return memo[N];
     memo[N] = nums(N-1);
     if(N > 1) memo[N] += nums(N-2);
@@ -35,17 +34,16 @@ int main(){
     cin >> N;
     cin.ignore();
 
+    memo = new int[11];
+    fill_n(memo, 11, 0);
+
     int cases;
     for(int i = 0 ; i < N ; i++){
         cin >> cases;
-        memo = new int[cases+1];
-        for(int j = 0; j <= cases ; j++) memo[j] = 0;
-
         cout << nums(cases) << '\n';
-
-        delete memo;
     }
-    
+
+    delete memo;    
 
     return 0;
 }
