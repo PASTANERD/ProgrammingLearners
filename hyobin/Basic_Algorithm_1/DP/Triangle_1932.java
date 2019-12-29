@@ -18,9 +18,8 @@ public class Triangle_1932 {
 		
 		for(int i=2; i<N; i++) {
 			D[i][0] = D[i-1][0] + scanner.nextInt();
-			for(int j=1; j<i; j++) {
+			for(int j=1; j<i; j++)
 				D[i][j] = Math.max(D[i-1][j-1], D[i-1][j]) + scanner.nextInt();
-			}
 			D[i][i] = D[i-1][i-1] + scanner.nextInt();
 		}
 		
