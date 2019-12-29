@@ -22,7 +22,7 @@ public class RGB_1149 {
 			color[2] = scanner.nextInt();
 
 			if(i==0) {
-				//C[0] = color; 이렇게 하니까 call by value 됨ㅠㅠ
+				//C[0] = color; 이렇게 하니까 call by reference 됨ㅠㅠ
 				C[0] = Arrays.copyOf(color, color.length);
 				continue;
 			}
