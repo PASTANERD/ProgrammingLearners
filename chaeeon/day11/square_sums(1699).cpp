@@ -5,7 +5,10 @@
 *   Solved by chaeeon lim
 *   pastanerd0416@gmail.com
 */
-
+/**
+ * mss[N]: Minimum cases for N
+ * mss[N] = min(mss[N], mss[N-i*i] + 1)
+ * */
 #include <iostream>
 
 using namespace std;

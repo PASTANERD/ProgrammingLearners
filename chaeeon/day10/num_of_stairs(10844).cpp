@@ -46,7 +46,6 @@ int main(){
         stairs[i][9] = stairs[i-1][8] % MODULAR;
     }
 
-    
     unsigned int sum = 0;
     for(int i = 0; i <= 9; i++) {
         sum += stairs[N-1][i];
