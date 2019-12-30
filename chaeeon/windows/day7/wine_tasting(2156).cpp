@@ -9,11 +9,10 @@
 /*
  *  best(N):    best cases to have maximum wines for number of N wines
  *  best(N) = max(cases[N][0], cases[N][1], cases[N][2]) 
- *  cases[N][C]: 
+ *  cases[N][C]: Nth wine with Cth choice (0: Not choose, 1: choose first in a sequence, 2: choose second in a sequence)
  *  cases[N][0] = max(cases[N-1], cases[N-1][1], cases[N-1][2])
  *  cases[N][1] = cases[N-1][0] + wine[N]
- *  cases[N][2] = cases[N-1][1] + wine[N]
- *  
+ *  cases[N][2] = cases[N-1][1] + wine[N] 
  */
 
 #include <iostream>
