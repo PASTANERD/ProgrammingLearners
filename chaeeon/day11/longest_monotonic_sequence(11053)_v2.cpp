@@ -1,6 +1,6 @@
 /*
 *   Baekjoon Online Judge
-*   https://www.acmicpc.net/problem/11053
+*   https://www.acmicpc.net/problem/2193
 *   
 *   Solved by chaeeon lim
 *   pastanerd0416@gmail.com
@@ -55,29 +55,13 @@ int main(){
         A.push_back(temp);
     }
     
-    int ***len = new int**[N+1];
+    int **len = new int*[N+1];
     for(int i = 0 ; i <= N ; i++){
-        len[i] = new int*[N+1];
-        for(int j = 0 ; j <= N ; j++){
-            len[i][j] = new int[2];
-            fill_n(len[i][j], 2, 0);
-        }
+        len[i] = new int[2];
+        fill_n(len[i], 2, 0);
     }
-    // temp = 0;
+    temp = 0;
     int longest = 0;
-
-    for(int i = 1 ; i <= N ; i++){
-        temp = A[i-1];
-        for(int j = i ; j <= N ; j++){
-            len[i][j][0] = max(len[i][j-1][0], len[i][j-1][1]);
-            if(temp < A[j-1]){
-                temp = A[j-1];
-                len[i][j][1] = len[i][j-1][1] + 1;
-            }
-            else len[i][j][1] = len[i][j-1][0] + 1;
-        }
-        longest = max(longest, max(len[i][N][0], len[i][N][1]));
-    }
 
     cout << longest << '\n';
 
