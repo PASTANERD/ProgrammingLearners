@@ -21,7 +21,7 @@ public class Bitonic_Sequence_11054 {
 		
 		for(int i=N-1; i>=0; i--) { //i 기준 가장 긴 감소 수열 개수 카운트
 			Dec[i] = min(N, i) + 1;
-			Inc[i] = Inc[i] + Dec[i] - 1;
+			Inc[i] = Inc[i] + Dec[i] - 1; //두개 더함
 		}
 		
 		Arrays.sort(Inc);
