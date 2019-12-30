@@ -20,14 +20,6 @@ int main(){
     cin >> N;
 
     unsigned int len = 0;
-    // if(N > 10) len += 9;
-    // else{
-    //     len = N;
-    // }
-    // if(N > 100) len += (99 - 10 + 1) * 2;
-    // else{
-    //     len += (N-10 + 1) *2;
-    // }
 
     int k = 1;
     for(int i = 1 ; i <= 100000000 ; i *= 10){
@@ -37,7 +29,6 @@ int main(){
             break;    
         }
         k++;
-        // cout << "len: " << len << '\n';
     }
 
     cout << len;
