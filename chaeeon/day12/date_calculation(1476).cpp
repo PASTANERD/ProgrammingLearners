@@ -5,7 +5,7 @@
 *   Solved by chaeeon lim
 *   pastanerd0416@gmail.com
 */
-*incomplete
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -19,12 +19,24 @@ int main(){
     int E, S, M;
     cin >> E >> S >> M;
 
+    int e = 1, s = 1, m = 1;
+    int years = 1;
+    while(true){
+        if(e == E && s == S && m == M){
+            break;
+        }
+        e += 1;
+        s += 1;
+        m += 1;
+
+        if(e > 15) e %= 15;
+        if(s > 28) s %= 28;
+        if(m > 19) m %= 19;
+
+        years++;
+    }    
     
-    // 1 <= E <= 15
-    // 1 <= S <= 28
-    // 1 <= M <= 19
-
-
+    cout << years;
 
     return 0;
 }
