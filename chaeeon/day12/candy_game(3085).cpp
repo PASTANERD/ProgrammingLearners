@@ -9,8 +9,6 @@
 
 #include <iostream>
 #include <string>
-#include <vector>
-#include <algorithm>
 
 using namespace std;
 
@@ -29,20 +27,25 @@ int count_candy(string target){
         }
         if(best < count) best = count;
     }
-
     return best;
 }
 
 string columnize(string* board, int index){
     string column = "";
-
-    for(int i = 0 ; i < board[index].size() ; i++){
+    for(int i = 0 ; i < board[index].size() ; i++)
         column.push_back(board[i][index]);
-    }
 
     return column;
 }
 
+int best_case(string *board){
+    int best = 0;
+    int N = board[0].size();
+    for(int i = 0 ; i < N ; i++) 
+        best = max(best, max(count_candy(board[i]), count_candy(columnize(board, i))));    
+
+    return best;
+}
 
 int main(){
     ios_base::sync_with_stdio(false);
@@ -56,11 +59,7 @@ int main(){
         cin >> board[i];
     }
 
-    int best;
-    int count_row;
-    int count_col;
-    string target_column;
-    
+    int best = 0;
     char temp;
     
     for(int i = 0; i < N-1 ; i++){
@@ -70,23 +69,8 @@ int main(){
             board[i][j] = board[i][j+1];
             board[i][j+1] = temp;
 
-            //row count
-            count_row = count_candy(board[i]);
-            //column count
-            target_column = columnize(board, j);
-            count_col = count_candy(target_column);
-            best = max(best,max(count_row, count_col));
+            best = max(best, best_case(board));
 
-            //row+1 count
-            count_row = count_candy(board[i+1]);
-            
-            //column+1 count
-            target_column = columnize(board, j+1);
-            count_col = count_candy(target_column);
-
-            best = max(best,max(count_row, count_col));
-
-            // recover
             board[i][j+1] = board[i][j];
             board[i][j] = temp;
 
@@ -95,28 +79,30 @@ int main(){
             board[j][i] = board[j+1][i];
             board[j+1][i] = temp;
 
-            //row count
-            count_row = count_candy(board[j]);
-
-            //column count
-            target_column = columnize(board, i);
-            count_col = count_candy(target_column);
-            best = max(best,max(count_row, count_col));
-
-            //row+1 count
-            count_row = count_candy(board[j+1]);
-            
-            //column+1 count
-            target_column = columnize(board, i+1);
-            count_col = count_candy(target_column);
-
-            best = max(best,max(count_row, count_col));
+            best = max(best, best_case(board));
 
             // recover
             board[j+1][i] = board[j][i];
             board[j][i] = temp;   
         }
     }
+
+    // Horizontal
+    temp = board[N-1][N-1];
+    board[N-1][N-1] = board[N-1][N-2];
+    board[N-1][N-2] = temp;
+
+    best = max(best, best_case(board));
+
+    board[N-1][N-2] = board[N-1][N-1];
+    board[N-1][N-1] = temp;
+
+    // Vertical
+    temp = board[N-1][N-1];
+    board[N-2][N-1] = board[N-2][N-1];
+    board[N-2][N-1] = temp;
+
+    best = max(best, best_case(board));
 
     cout << best;
 
