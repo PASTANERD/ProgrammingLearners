@@ -53,11 +53,12 @@ int main(){
             if(i+1 <n){
                 swap(a[i][j], a[i+1][j]);
                 int temp = check(a);
-                swap(a[i][j], a[i+1][j])
+                if(ans < temp) ans = temp;
+                swap(a[i][j], a[i+1][j]);
             }
         }
     }
 
-
+    cout << ans << "\n";
     return 0;
 }
