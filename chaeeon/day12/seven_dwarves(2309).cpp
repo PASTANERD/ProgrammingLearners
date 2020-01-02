@@ -29,8 +29,8 @@ int main(){
 
     int difference = sum - 100;
 
-    for(vector<int>::iterator itr = dwarves.begin() ; itr != dwarves.end() ; itr++){
-        for(vector<int>::iterator jtr = itr+1 ; jtr != dwarves.end() ; jtr++){
+    for(auto itr = dwarves.begin() ; itr != dwarves.end() ; itr++){
+        for(auto jtr = itr+1 ; jtr != dwarves.end() ; jtr++){
             if(*itr + *jtr == difference){
                 dwarves.erase(itr);
                 dwarves.erase(--jtr);
