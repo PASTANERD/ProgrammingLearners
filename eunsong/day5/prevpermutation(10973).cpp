@@ -41,11 +41,12 @@ int main(){
     
     swap(a[next-1], a[j]);
 
-    for(int i=n-1; i>next; i--){
+    /*for(int i=n-1; i>next; i--){
         for(int k=next; k<=i; k++)
             if(a[k] < a[k+1])
                 swap(a[k],a[k+1]);
-    }
+    }*/
+    sort(a+next, a+n);
 
     for(int i=0; i<n; i++)
         cout << a[i] << " ";
