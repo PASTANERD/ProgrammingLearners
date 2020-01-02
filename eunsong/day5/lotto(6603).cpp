@@ -10,12 +10,13 @@ int main(){
 
     int k;
     cin >> k;
+    cin.ignore();
 
     vector<int> s(k);
     vector<int> a(k);
     for(int i=0; i<k; i++){
         cin >> s[i];
-        if(i < 6) a[i] = 1;
+        if(i<6)  a[i] = 1;
     }
     for(int i=6; i<k; i++)
         a[i] = 0;
