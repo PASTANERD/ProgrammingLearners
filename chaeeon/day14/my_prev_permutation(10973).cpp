@@ -1,7 +1,7 @@
 
 /*
 *   Baekjoon Online Judge
-*   https://www.acmicpc.net/problem/10972
+*   https://www.acmicpc.net/problem/10973
 *   
 *   Solved by chaeeon lim
 *   pastanerd0416@gmail.com

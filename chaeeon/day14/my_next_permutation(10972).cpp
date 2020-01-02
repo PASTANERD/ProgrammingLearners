@@ -24,8 +24,6 @@ bool my_next_perm(int *array, int n){
         sort(array+i,array+n);
         return true;
     }
-
-
 }
 
 int main(){
