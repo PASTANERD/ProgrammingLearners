@@ -43,7 +43,7 @@ int main(){
     fill_n(used, 10, false);
     for(int i = 0 ; i < N ; i++) cin >> base[i];
     sort(base, base+N);
-    go(0, 0,N, M);
+    go(0, 0, N, M);
     
     return 0;
 }
