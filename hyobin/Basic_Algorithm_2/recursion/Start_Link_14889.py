@@ -1,3 +1,24 @@
+"""
+첫째 줄에 스타트 팀과 링크 팀의 능력치의 차이의 최솟값을 출력한다.
+
+4
+0 1 2 3
+4 0 5 6
+7 1 0 2
+3 4 5 0
+
+0
+
+6
+0 1 2 3 4 5
+1 0 2 3 4 5
+1 2 0 3 4 5
+1 2 3 0 4 5
+1 2 3 4 0 5
+1 2 3 4 5 0
+
+2
+"""
 import numpy as np
 import pandas as pd
 from itertools import combinations
