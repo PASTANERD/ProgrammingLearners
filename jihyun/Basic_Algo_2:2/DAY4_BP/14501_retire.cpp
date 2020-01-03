@@ -15,10 +15,10 @@ void check(int day, int sum){
        return;
     }
     if(day>n+1)
-        return
+        return;
     
     check(day+1, sum);
-    check(day+schedule[day][0], day+schedule[day][1]);
+    check(day+schedule[day][0], sum+schedule[day][1]);
     
 }
 
