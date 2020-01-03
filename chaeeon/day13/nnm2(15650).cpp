@@ -6,9 +6,6 @@
 *   pastanerd0416@gmail.com
 */
 
-/**
- * 
- * */
 #include <iostream>
 
 using namespace std;
@@ -41,3 +38,12 @@ int main(){
     
     return 0;
 }
+
+/**
+ *  1 2 3 4 5 ..
+ * O  O
+ * X  X
+ * 
+ *  자리 1 2 3  --> selected
+ *  수   2 5 6 --> index
+ * */

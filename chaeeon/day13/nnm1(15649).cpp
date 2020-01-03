@@ -23,9 +23,9 @@ int go(int index, int n, int m){
                 used[i] = true;
                 a[index] = i;
                 go(index+1, n, m);
+                // go(index++, n, m);
                 used[i] = false; 
-            }
-            
+            }   
         }
     }
     return 0;
