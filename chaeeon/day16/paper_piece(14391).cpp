@@ -21,12 +21,8 @@ int main(){
     int N, M;
     cin >> N >> M;
 
-    int paper[N][M];
-    for(int i = 0 ; i < N ; i++){
-        for(int j = 0 ; j < M ; j++){
-            cin >> paper[i][j];
-        }
-    }
+    string paper[N];
+    for(int i = 0 ; i < N ; i++) cin >> paper[i];
 
 
 
