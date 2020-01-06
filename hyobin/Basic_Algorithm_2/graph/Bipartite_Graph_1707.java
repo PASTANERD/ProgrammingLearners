@@ -76,6 +76,7 @@ public class Bipartite_Graph_1707 {
 				if(color[i] == 0) {
 					if(dfs(i,1) == false) {
 						ok = false;
+						//여기서 바로 프린트하고 리턴하면 틀림. 왜..?ㅠ
 						break;
 					}
 				}
