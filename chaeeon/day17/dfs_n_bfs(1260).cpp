@@ -16,19 +16,22 @@ using namespace std;
 bool *visit;
 
 void bfs(int v, vector<int> *e){
-    queue<int> *q = new queue<int>();
+    queue<int> q;
     int current = 0;
     
-    q->push(v);
-
-    while(!q->empty()){
-        current = q->front();
-        visit[current] = true;
+    q.push(v);
+    visit[v] = true;
+    while(!q.empty()){
+        current = q.front();
+        
         cout << current << " ";
         for(vector<int>::iterator next = e[current].begin() ; next != e[current].end() ; next++){
-            if(!visit[*next]) q->push(*next);
+            if(!visit[*next]) {
+                q.push(*next);
+                visit[*next] = true;
+            }
         }
-        q->pop();
+        q.pop();
     }
 }
 
@@ -39,7 +42,6 @@ void dfs(int v, vector<int>* e){
         if(!visit[*next]) dfs(*next, e);
     }
 }
-
 
 int main(){
     ios_base::sync_with_stdio(false);
@@ -63,13 +65,13 @@ int main(){
     for(int i = 1 ; i <= N ; i++) sort(adjacent[i].begin(), adjacent[i].end());
     
     // dfs
-    fill_n(visit, N, false);
+    fill_n(visit, N+1, false);
     dfs(V, adjacent);
 
     cout << '\n';
     
     // bfs
-    fill_n(visit, N, false);
+    fill_n(visit, N+1, false);
     bfs(V, adjacent);
 
     return 0;
