@@ -18,7 +18,7 @@ int go(int index, vector<int> &first, vector<int> &second){
             second.pop_back();
         }
     }
-    for()
+    
         
 }
 

@@ -43,6 +43,7 @@ public class Maze_2178 {
 		M = Integer.parseInt(st.nextToken());
 		
 		maze = new int[N+2][M+2];
+		boolean[][] check = new boolean[N+2][M+2];
 		
 		for(int i=1; i<=N; i++) {
 			String s = br.readLine();
@@ -51,9 +52,7 @@ public class Maze_2178 {
 			}
 		}
 		
-		boolean[][] check = new boolean[N+2][M+2];
 		bfs(1, 1, 1, check);
-		
 		System.out.println(min);
 	}
 	
