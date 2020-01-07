@@ -14,7 +14,7 @@ int main(){
         cin >> num[i];
     
     int ans=0;
-    for(int i=0; i<(1<<n); i++){
+    for(int i=1; i<(1<<n); i++){
         int sum=0;
         for(int k=0; k<n; k++){
             if(i&(1<<k))
