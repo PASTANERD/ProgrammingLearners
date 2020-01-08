@@ -53,12 +53,90 @@
 3 18
  */
 package tree;
+import java.util.*;
+import java.io.*;
 
 public class Tree_Level_2250 {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	static int[][] tree;
+	static int[] col;
+	static ArrayList<Integer>[] level;
+	static int max = 1,  maxidx = 1, col_level = 1;;
+	static int[] parent;
+	
+	static void inorder(int i, int l) {
+		if(i == -1) return;
+		int left = tree[i][0];
+		int right = tree[i][1];
+		level[l].add(i);
+		
+		inorder(left, l+1);
+		col[i] = col_level++;
+		inorder(right, l+1);
+	}
+	
+	static void getmax() {
+		for(int i=0; i<level.length-1; i++) { //0~N
+			if(level[i].size() == 0) return;
+			int first = level[i].get(0);
+			int last = level[i].get(level[i].size()-1);
+			int width = col[last] - col[first] + 1;
+			if( max < width ) {
+				maxidx = i+1;
+				max = width;
+			}
+		}
 	}
 
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = null;
+		int N = Integer.parseInt(br.readLine());
+		tree = new int[N+1][2];
+		level = new ArrayList[N];
+		col = new int[N+1];
+		parent = new int[N+1];
+		
+		//입력 받기
+		for(int i=0; i<N; i++) {
+			level[i] = new ArrayList<Integer>();
+			st = new StringTokenizer(br.readLine());
+			int a = Integer.parseInt(st.nextToken());
+			int b = Integer.parseInt(st.nextToken());
+			int c = Integer.parseInt(st.nextToken());
+			tree[a][0] = b;
+			tree[a][1] = c;
+			if(b != -1) parent[b] = a;
+			if(c != -1) parent[c] = a;
+		}
+		
+		//루트...,,,,,찾아야함... 
+		inorder(findroot(N), 0);
+		getmax();
+		System.out.print(maxidx + " " + max);
+	}
+	
+	public static int findroot(int N) {
+		for(int i=1; i<=N; i++) {
+			if(parent[i] == 0 ) {
+				return i;
+			}
+		}
+		return -1;
+	}
 }
+
+/*
+9
+2 -1 -1
+1 2 -1
+8 -1 -1
+4 1 8
+3 4 5
+6 -1 -1
+5 6 7
+7 -1 9
+9 -1 -1
+
+4 9
+ * */
