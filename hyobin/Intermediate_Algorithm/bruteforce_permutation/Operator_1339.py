@@ -1,7 +1,8 @@
 from itertools import permutations
-N = int(input())
-num = list(map(int, input().split()))
-operator = list(map(int,input().split()))
+from sys import stdin
+N = int(stdin.readline())
+num = list(map(int, stdin.readline().split()))
+operator = list(map(int,stdin.readline().split()))
 ops = ['+','-','*','/']
 
 op = []
