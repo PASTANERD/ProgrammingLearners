@@ -32,7 +32,7 @@
 package tree;
 import java.util.*;
 import java.io.*;
-import print.*;
+// import print.*;
 
 public class Tree_diameter_1167 {
 	static ArrayList<Pair>[] edge;
@@ -49,6 +49,7 @@ public class Tree_diameter_1167 {
 		for(Pair pair : edge[x]) {
 			if(pair.y==p) continue;  //tree 라서 check대신 부모만 처리
 			dfs(pair.y, x, curr_distance, pair.m);
+
 		}
 	}
 
@@ -67,6 +68,7 @@ public class Tree_diameter_1167 {
 			while(true) {
 				int y = Integer.parseInt(st.nextToken());
 				if( y == -1) break;
+
 				int m = Integer.parseInt(st.nextToken());
 				edge[x].add(new Pair(y, m));
 			}
