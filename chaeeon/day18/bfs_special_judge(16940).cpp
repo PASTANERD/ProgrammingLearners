@@ -37,14 +37,11 @@ void bfs(int v, vector<int> *e, vector<int> answer){
                 correct = true;
             }
         }
-        if(!correct){
-            cout << 0;
-            break;
-        }
-        else{
-            correct = false;
-        }
+        if(!correct) break;
+        else correct = false;
     }
+    if(correct) cout << 1;
+    else 
 }
 
 int main(){

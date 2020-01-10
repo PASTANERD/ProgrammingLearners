@@ -32,19 +32,19 @@
 package tree;
 import java.util.*;
 import java.io.*;
-import print.*;
+// import print.*;
 
 //dfs.. 모든 노드 .. 
 public class Tree_diameter_1167 {
 	static ArrayList<Integer>[] edge;
-	static int[][] dm;
+	static int[] dm;
 	static int max=0;
 	
 	//s : start
 	//p : parent
 	//m : 지금까지 거리
 	static void dfs(int x, int s, int p, int m) {
-		int curr_distance = m + dm[x][p];
+		int curr_distance = m + dm[x];
 		if(max < curr_distance) max = curr_distance;
 		for(int y : edge[x]) {
 			if(y==p) continue;  //tree 라서 check대신 부모만 처리
@@ -58,7 +58,7 @@ public class Tree_diameter_1167 {
 		int N = Integer.parseInt(br.readLine());
 		StringTokenizer st = null;
 		edge = new ArrayList[N+1];
-		dm = new int[N+1][N+1];
+		dm = new int[N+1];
 		
 		for(int i=0; i<=N; i++) edge[i] = new ArrayList<Integer>();
 		
@@ -69,12 +69,12 @@ public class Tree_diameter_1167 {
 				int y = Integer.parseInt(st.nextToken());
 				if( y == -1) break;
 				edge[x].add(y);
-				dm[x][y] =Integer.parseInt(st.nextToken());
+				dm[y] =Integer.parseInt(st.nextToken());
 			}
 		}
 		
-//		P.print(edge);
-//		P.print(dm);
+		// P.print(edge);
+		// P.print(dm);
 		
 		for(int i=1; i<=N; i++) {
 			dfs(i,i,i,0);

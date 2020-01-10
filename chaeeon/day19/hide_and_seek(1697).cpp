@@ -24,11 +24,11 @@ void bfs(int v, int k){
     q.push(v);
     visit[v] = true;
     dist[v] = 0;
-    while(true){
+    while(current != k){
         current = q.front();
         q.pop();
 
-        if(current == k) break;
+        // if(current == k) break;
         
         int next =  current - 1;        
         if(next >= MIN && !visit[next]){
