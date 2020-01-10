@@ -15,6 +15,13 @@ using namespace std;
 
 int N;
 
+void possible_cases(int index, vector<int> sequence){
+    if(sequence.size() == N) return;
+    else{
+
+    }
+}
+
 
 int main(){
     ios_base::sync_with_stdio(false);
@@ -26,6 +33,8 @@ int main(){
         for(int i = 0 ; i < N ; i++){
             cin >> numbs[i];
         }
+
+
     }
    
     return 0;

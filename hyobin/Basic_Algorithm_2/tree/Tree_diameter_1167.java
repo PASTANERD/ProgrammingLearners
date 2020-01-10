@@ -34,21 +34,22 @@ import java.util.*;
 import java.io.*;
 // import print.*;
 
-//dfs.. 모든 노드 .. 
 public class Tree_diameter_1167 {
-	static ArrayList<Integer>[] edge;
+	static ArrayList<Pair>[] edge;
 	static int[] dm;
 	static int max=0;
-	
-	//s : start
-	//p : parent
-	//m : 지금까지 거리
-	static void dfs(int x, int s, int p, int m) {
-		int curr_distance = m + dm[x];
-		if(max < curr_distance) max = curr_distance;
-		for(int y : edge[x]) {
-			if(y==p) continue;  //tree 라서 check대신 부모만 처리
-			dfs(y, s, x, curr_distance);
+	static int max_idx=0;
+
+	static void dfs(int x, int p, int total_m, int m) {
+		int curr_distance = total_m + m;
+		if(max < curr_distance) {
+			max = curr_distance;
+			max_idx = x;
+		}
+		for(Pair pair : edge[x]) {
+			if(pair.y==p) continue;  //tree 라서 check대신 부모만 처리
+			dfs(pair.y, x, curr_distance, pair.m);
+
 		}
 	}
 
@@ -58,9 +59,8 @@ public class Tree_diameter_1167 {
 		int N = Integer.parseInt(br.readLine());
 		StringTokenizer st = null;
 		edge = new ArrayList[N+1];
-		dm = new int[N+1];
 		
-		for(int i=0; i<=N; i++) edge[i] = new ArrayList<Integer>();
+		for(int i=0; i<=N; i++) edge[i] = new ArrayList<Pair>();
 		
 		for(int i=1; i<=N; i++) {
 			st = new StringTokenizer(br.readLine());
@@ -68,19 +68,26 @@ public class Tree_diameter_1167 {
 			while(true) {
 				int y = Integer.parseInt(st.nextToken());
 				if( y == -1) break;
-				edge[x].add(y);
-				dm[y] =Integer.parseInt(st.nextToken());
+
+				int m = Integer.parseInt(st.nextToken());
+				edge[x].add(new Pair(y, m));
 			}
 		}
 		
-		// P.print(edge);
-		// P.print(dm);
-		
-		for(int i=1; i<=N; i++) {
-			dfs(i,i,i,0);
-		}
-
+//		P.print(edge);
+//		
+		dfs(1,-1,0,0);
+		dfs(max_idx,-1,0,0);
 		
 		System.out.print(max);
+	}
+	
+	public static class Pair {
+		int y;
+		int m;
+		Pair (int y, int m){
+			this.y = y;
+			this.m = m;
+		}
 	}
 }
