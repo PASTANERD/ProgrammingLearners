@@ -26,26 +26,18 @@ bool check(int *array, vector<char> ieq_list){
 }
 
 unsigned long case_test(int *array, vector<char> ieq_list, bool flag){
-    // unsigned int maximus = 0, minimus = 10000000000;
     unsigned long best = (flag ? 0 : ~0);
     do{
-        // for(int i = 0 ; i < N; i++) cout << array[i] << ' ';
-        
         if(check(array, ieq_list)){
             unsigned long temp = 0;
             unsigned long factor = 1;
             for(int i = 0 ; i <= N ; i++){
                 temp = temp*10 + array[i];
-                // if(array[i] == 0) temp
             }
-            // cout << " --> temp: " << temp << " ";
             if(flag) best = max(best , temp);
             else best = min(best, temp);
         }
-        // cout << "(best: " << best << ")";
-        // cout << '\n';
     }while(next_permutation(array, array+(N+1)));
-
     return best;
 }
 

@@ -16,7 +16,10 @@ using namespace std;
 int N;
 
 void possible_cases(int index, vector<int> sequence){
-    if(sequence.size() == N) return;
+    if(sequence.size() == N) {
+        
+        return;    
+    }
     else{
 
     }
