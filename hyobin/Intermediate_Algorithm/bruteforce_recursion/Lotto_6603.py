@@ -3,7 +3,8 @@ while(True) :
     s = input()
     if(s == "0") :
         break
-    num = s.split()[1:]
+    num = s.split()
+    num = num[1:]
 
     for comb in combinations(num, 6) :
         print(" ".join(comb))
