@@ -34,7 +34,8 @@ public class Hide_n_Seek_3_13549 {
         	while(!queue.isEmpty()) {
         		result = queue.poll();
         		int loc = result.loc;     //n
-        		if(loc == k) {
+        		if(loc == k) 
+        		{
         			min = result.index;
         			break;
         		}
