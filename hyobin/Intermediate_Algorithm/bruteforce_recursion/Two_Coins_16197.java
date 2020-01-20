@@ -73,8 +73,6 @@ import java.io.*;
 public class Two_Coins_16197 {
 	
 	static int[][] board;
-	static boolean[][] check1;
-	static boolean[][] check2;
 	static int N, M;
 	static int COUNT = -1;
 	static int[] xg = {1, -1, 0, 0};
@@ -82,10 +80,11 @@ public class Two_Coins_16197 {
 	
 	public static void go(int x1, int y1, int x2, int y2, int count) {
 		if(count > 10) return;
-		if( (x1 > N || y1 >M || x1==0 || y1==0) && (x2 > N || y2 > M || x2==0 || y2==0)) 
-			return;    //"둘다 떨어짐");
-		
-		if( ( x1 > N || y1 >M || x1==0 || y1==0) || (x2 >N || y2 >M || x2==0 || y2==0)) {
+		boolean fall1 = false, fall2 = false;
+		if (x1 > N || y1 >M || x1==0 || y1==0) fall1 = true;
+		if (x2 > N || y2 > M || x2==0 || y2==0) fall2 = true;
+		if( fall1 && fall2) return;    //"둘다 떨어짐");
+		if(fall1 || fall2) {
 			if(COUNT == -1) COUNT = count;
 			else if (count < COUNT) COUNT = count;
 			return;  //"한개만 떨어짐 ");
@@ -109,8 +108,6 @@ public class Two_Coins_16197 {
 		M = Integer.parseInt(st.nextToken());
 		int x1 = 0, y1 =0, x2 = 0, y2 = 0, flag = 0;
 		board = new int[N+2][M+2];
-		check1 = new boolean[N+2][M+2];
-		check2 = new boolean[N+2][M+2];
 		
 		for(int i=1; i<=N; i++) {
 			String input =  br.readLine();
