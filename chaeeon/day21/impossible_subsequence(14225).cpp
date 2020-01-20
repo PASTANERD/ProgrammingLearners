@@ -22,14 +22,8 @@ void dfs(int v, int k, int *seq){
         visit[v] = true;
         return;
     }
-    // for(int i = k+1 ; i < N ; i++){
-        // cout << "[O]current: " << v << "\tnext: " << v+seq[i] <<  "\tk :" << i << '\n';    
-        // if(!visit[v+seq[i]]) 
     dfs(v+seq[k], k+1, seq);
-        // cout << "[X]current: " << v << "\tnext: " << seq[i] <<  "\tk :" << i << '\n';
-        // if(!visit[seq[i]])
     dfs(v, k+1, seq);   
-    // }
 }
 
 int main(){
