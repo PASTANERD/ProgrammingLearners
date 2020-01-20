@@ -1,34 +1,40 @@
 package bruteforce_recursion;
 
 import java.util.HashMap;
+import java.util.Map;
 
-class A{
-   static int x;
-   int y;
-   
-   public A(int x, int y) {
-      this.x = x;
-      this.y = y;
-   }
-
-   @Override
-   public boolean equals(Object obj) {
-      A another = (A)obj;
-      if(another.x == this.x && another.y == this.y)
-         return true;
-      return false;
-   }
+interface PC {
+	default void print() {
+		System.out.println("default print");
+	}
+	
+	void game();
+	
+	static void click() {
+		System.out.println("static click ");
+	}
 }
 
-class Test{
+class Moniter implements PC{
+
+	@Override
+	public void game() {
+		// TODO Auto-generated method stub
+		System.out.println("my game");
+	}
+	
+	public void print() {
+		System.out.println("my print");
+	}
+	
+}
+
+public class Test{
+	static int a; 
    public static void main(String[] args) {
-	  String[] s = new String[10];
-      HashMap<A, Integer> map = new HashMap<>();
-      A a = new A(1, 2);
-      map.put(a, 10);
-      if(map.containsKey(new A(1,2)))
-         System.out.println("true");
-      else
-         System.out.println("false");
+//	   PC.click();
+	   PC pc = new Moniter();
+	   pc.print();
+	   pc.game();
    }
 }
