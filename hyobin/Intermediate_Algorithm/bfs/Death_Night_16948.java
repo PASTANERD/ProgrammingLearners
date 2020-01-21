@@ -68,8 +68,7 @@ public class Death_Night_16948 {
 			check[now.r][now.c] = true;
 			for(int i=0; i<6; i++) {
 				q.add(new P(now.r+xg[i], now.c+yg[i], now.count+1));
-			}
-					
+			}		
 		}
 	}
 
