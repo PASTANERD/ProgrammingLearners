@@ -59,9 +59,7 @@ public class DSLR {
 		while(!q.isEmpty()) {
 			P now = q.remove();
 			if(check[now.n]) continue;
-			if(now.n==B) {
-				return now.c;
-			}
+			if(now.n==B) return now.c;
 			check[now.n] = true;
 			q.add(new P(D(now.n), now.c+"D"));
 			q.add(new P(S(now.n), now.c+"S"));
