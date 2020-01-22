@@ -5,6 +5,15 @@ public class Wall_cracking_2_14442 {
 	
 	static int[] xg = {0,0,1,-1};
 	static int[] yg = {1,-1,0,0};
+	
+	static class Pair {
+		int x , y, z;
+		Pair(int x, int y, int z){
+			this.x = x;
+			this.y = y;
+			this.z = z;
+		}
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
