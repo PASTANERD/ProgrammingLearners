@@ -80,9 +80,7 @@ public class DSLR {
 			
 			check = new boolean[10001];
 			System.out.println(bfs());
-			
 		}
-
 	}
 	
 	public static int D(int n) {

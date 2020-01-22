@@ -136,7 +136,7 @@ public class Laboratory_14502 {
 			}
 		}
 		
-		B : for(int x1=0; x1<N; x1++) {
+		for(int x1=0; x1<N; x1++) {
 			for(int y1=0; y1<M; y1++) {
 				if(board[x1][y1] != 0) continue;
 				for(int x2=0; x2<N; x2++) {
@@ -158,7 +158,6 @@ public class Laboratory_14502 {
 				}
 			}
 		}
-	
 		System.out.println(M*N - ans - min);
 	}
 

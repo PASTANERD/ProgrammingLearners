@@ -29,85 +29,49 @@ import java.io.*;
 
 public class Dol_Group_12886 {
 	
-	static ArrayList<P> list = new ArrayList<>(); //check대신
+	static boolean[][] arr = new boolean[1501][1501];
 	static boolean flag = false;
+	static int A, B, C, N;
 	
-	class P {
+	static class P {
 		int a;
 		int b;
-		int c;
-		@Override
-		public int hashCode() {
-			final int prime = 31;
-			int result = 1;
-			result = prime * result + getEnclosingInstance().hashCode();
-			result = prime * result + a;
-			result = prime * result + b;
-			result = prime * result + c;
-			return result;
-		}
-		@Override
-		public boolean equals(Object obj) {
-			if (this == obj)
-				return true;
-			if (obj == null)
-				return false;
-			if (getClass() != obj.getClass())
-				return false;
-			P other = (P) obj;
-			if (!getEnclosingInstance().equals(other.getEnclosingInstance()))
-				return false;
-			if (a != other.a)
-				return false;
-			if (b != other.b)
-				return false;
-			if (c != other.c)
-				return false;
-			return true;
-		}
-		P(int a, int b, int c){
+		P(int a, int b){
 			this.a = a;
 			this.b = b;
-			this.c = c;
-		}
-		private Dol_Group_12886 getEnclosingInstance() {
-			return Dol_Group_12886.this;
 		}
 	}
 	
-	public void bfs(int A, int B, int C) {
+	static void bfs() {
 		Queue<P> q = new LinkedList<P>();
-		q.add(new P(A, B, C));
+		q.add(new P(A, B));
 		while(!q.isEmpty()) {
 			P now = q.remove();
-			if(now.a == now.b && now.b == now.c && now.a==now.c) {
+			int c = N-(now.a + now.b);
+			if(now.a == now.b && now.a == c)
 				flag = true;
-				break;
-			}
-			if(now.a > 500 || now.b >500 | now.c >500) continue;
-			if(list.contains(now)) continue;
-			list.add(now);
-			if(now.a < now.b) q.add(new P(now.a*2, now.b-now.a, now.c));
-			if(now.b < now.a) q.add(new P(now.a-now.b, now.b*2, now.c));
-			if(now.b < now.c) q.add(new P(now.a, now.b*2, now.c-now.b));
-			if(now.c < now.b) q.add(new P(now.a, now.b-now.c, now.c*2));
-			if(now.c < now.a) q.add(new P(now.a-now.c, now.b, now.c*2));
-			if(now.a < now.c) q.add(new P(now.a*2, now.b, now.c-now.a));
+			if(arr[now.a][now.b]) continue;
+			arr[now.a][now.b] = arr[now.b][now.a] = arr[c][now.a] = arr[c][now.b] = arr[now.a][c] = arr[now.b][c] = true;
+			if(now.a<now.b) q.add(new P(2*now.a, now.b-now.a));
+			if(now.b<now.a) q.add(new P(2*now.b, now.a-now.b));
+			if(now.a<c) q.add(new P(2*now.a, c-now.a));
+			if(c < now.a) q.add(new P(2*c, now.a-c));
+			if(c < now.b) q.add(new P(2*c, now.b-c));
+			if(now.b <c) q.add(new P(now.b*2, c-now.b));
 		}
-		
 	}
+	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner sc = new Scanner(System.in);
-		int A = sc.nextInt();
-		int B = sc.nextInt();
-		int C = sc.nextInt();
+		A = sc.nextInt();
+		B = sc.nextInt();
+		C = sc.nextInt();
+		N = A + B + C;
 		
-		Dol_Group_12886 M = new Dol_Group_12886();
-		M.bfs(A, B, C);
+		bfs();
 		if(flag) System.out.println(1);
 		else System.out.println(0);
 	}
-
 }
