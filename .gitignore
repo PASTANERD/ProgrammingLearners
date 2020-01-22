@@ -36,4 +36,7 @@
 .classpath
 .project
 .vscode
+settings.json
+launch.json
+tasks.json
 .DS_Store
