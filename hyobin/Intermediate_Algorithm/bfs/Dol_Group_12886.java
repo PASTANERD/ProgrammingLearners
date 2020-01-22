@@ -52,12 +52,14 @@ public class Dol_Group_12886 {
 				flag = true;
 			if(arr[now.a][now.b]) continue;
 			arr[now.a][now.b] = arr[now.b][now.a] = arr[c][now.a] = arr[c][now.b] = arr[now.a][c] = arr[now.b][c] = true;
-			if(now.a<now.b) q.add(new P(2*now.a, now.b-now.a));
-			if(now.b<now.a) q.add(new P(2*now.b, now.a-now.b));
-			if(now.a<c) q.add(new P(2*now.a, c-now.a));
-			if(c < now.a) q.add(new P(2*c, now.a-c));
-			if(c < now.b) q.add(new P(2*c, now.b-c));
-			if(now.b <c) q.add(new P(now.b*2, c-now.b));
+			int[] a = {now.a, now.b, c};
+			for(int i=0; i<3; i++) {
+				for(int j=0; j<3; j++) {
+					if(a[i] < a[j]) {
+						q.add(new P(a[i]*2, a[j]-a[i]));
+					}
+				}
+			}
 		}
 	}
 	
@@ -69,6 +71,11 @@ public class Dol_Group_12886 {
 		B = sc.nextInt();
 		C = sc.nextInt();
 		N = A + B + C;
+		
+		if(N%3 != 0) {
+			System.out.println(0);
+			return;
+		}
 		
 		bfs();
 		if(flag) System.out.println(1);
