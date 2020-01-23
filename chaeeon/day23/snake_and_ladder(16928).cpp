@@ -50,15 +50,15 @@ int bfs(int v, vector<int> *e){
                 if(!visit[cur+i]){
                     q.push(cur+i);
                     visit[cur+i] = true;
-                    rolled = true;
+                    // rolled = true;
                 }
             }
         }
         if(cur == boundary){
             boundary = q.back();
-            if(rolled){
+            // if(rolled){
                 count++;
-            }
+            // }
         }
     }
 
