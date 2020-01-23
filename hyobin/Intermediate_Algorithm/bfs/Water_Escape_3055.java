@@ -140,7 +140,7 @@ public class Water_Escape_3055 {
 		    		  if(map[nx][ny] != '.') //갈 수 있을때만 감
 		    			  continue;
 		    		  
-		    		  if(check[nx][ny][depth+1]) //체크
+		    		  if(check[nx][ny][depth+1]) // 중복 체크
 		    			  continue;
 		    		  
 		    		  check[nx][ny][depth+1] = true;
