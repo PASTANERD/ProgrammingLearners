@@ -2,7 +2,7 @@ package bfs;
 import java.util.*;
 import java.io.*;
 
-public class Laser_6087 {
+public class Prime_1963 {
 	
 	static int N = 10000;
 	static int[] prime = new int[N];
