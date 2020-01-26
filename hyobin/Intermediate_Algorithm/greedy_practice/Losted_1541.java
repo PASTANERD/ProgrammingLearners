@@ -39,13 +39,10 @@ public class Losted_1541 {
 				num += c;
 			} else {
 				n = Integer.parseInt(num);
-//				System.out.print(num + " ");
 				if(pre_c=='-' || (pre_c=='+' && flag==true)) {
-//					System.out.print(" - \n");
 					ans -= n;
 					flag = true;
 				} else {
-//					System.out.print(" + \n");
 					ans += n;
 				}
 				pre_c = c;
