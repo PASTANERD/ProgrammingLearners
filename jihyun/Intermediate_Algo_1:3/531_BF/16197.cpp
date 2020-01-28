@@ -4,11 +4,9 @@
 using namespace std;
 int n, m;
 int MIN = -1;
-char board[20][20], visited1[20][20], visited2[20][20];
+char board[21][21];
 int dx[] = {0,0,-1,1};
 int dy[] = {-1,1,0,0};
-pair<int, int> pre[] = {{0,1},{0,-1},{1,0},{-1,0}};
-int x1,y1,x2,y2;
 
 bool out(int x, int y){
     if(x<0 || x>=n || y<0 || y>=m)
@@ -16,32 +14,37 @@ bool out(int x, int y){
     return false;
 }
 
-
-void move(int tried, pair<int, int> prev){
-    if(tried > 10) return;
+void move(int x1, int y1, int x2, int y2, int tried){
     
-    if(out(x1, y1) && out(x2, y2))   return;
-    else if(out(x1, y1) || out(x2, y2)){
-        if(MIN == -1 || MIN > tried) MIN = tried;
+    if(tried > 10) return;
+    if(out(x1, y1) && out(x2, y2))  return;
+    if(out(x1, y1) || out(x2, y2)){
+        if(MIN == -1 || MIN > tried)
+            MIN = tried;
         return;
     }
+    if(x1 == x2 && y1 == y2) return;
     
     for(int k=0; k<4; k++){
-        if(pre[k] == prev) continue;
         
-        x1 += dx[k];    y1 += dy[k];
-        x2 += dx[k];    y2 += dy[k];
+        int tx1 = x1+dx[k];
+        int ty1 = y1+dy[k];
+        int tx2 = x2+dx[k];
+        int ty2 = y2+dy[k];
+        
         bool st1 = false, st2 = false;
-        if(!out(x1,y1) && board[x1][y1] == '#'){
+        if(!out(tx1,ty1) && board[tx1][ty1] == '#'){
             st1 = true;
-            x1 -= dx[k]; y1 -= dy[k];}
-        if(!out(x2,y2) && board[x2][y2] == '#'){
+            tx1-=dx[k]; ty1-=dy[k];
+        }
+        if(!out(tx2,ty2) && board[tx2][ty2] == '#'){
             st2 = true;
-            x2 -= dx[k]; y2 -= dy[k];}
+            tx2-=dx[k]; ty2-=dy[k];
+        }
         
         if(st1 && st2) continue;
         
-        move(tried+1, {dx[k],dy[k]});
+        move(tx1, ty1, tx2, ty2, tried+1);
     }
 }
 
@@ -60,12 +63,10 @@ int main(){
         }
     }
     
-    x1 = coin[0].first;
-    y1 = coin[0].second;
-    x2 = coin[1].first;
-    y2 = coin[1].second;
-    
-    move(0, {0,0});
+    move(coin[0].first, coin[0].second, coin[1].first, coin[1].second, 0);
     cout << MIN;
 }
+
+
+
 
