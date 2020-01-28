@@ -112,6 +112,6 @@ public class Wall_cracking_4_Answer_16946 {
 	      if (y < 0 || x < 0 || y >= N || x >= M)
 	         return true;
 	      return false;
-	   }
+   }
 
 }
