@@ -23,6 +23,7 @@ public class Card_11652 {
 				map.put(card, BigInteger.ONE);
 				continue;
 			}
+			
 			if(map.containsKey(card)) {
 				num = map.get(card).add(BigInteger.ONE);
 			} else num = BigInteger.ONE;
