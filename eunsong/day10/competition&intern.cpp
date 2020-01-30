@@ -19,7 +19,7 @@ int main(){
     else{
         n -= k/2;
         m -= k/2;
-        ans2 = n/m;
+        ans2 = n/m; 
     }
 
     cout << ans << "\n";

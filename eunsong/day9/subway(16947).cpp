@@ -22,7 +22,7 @@ int main(){
     }
 
     vector<int> circle;
-    bool ans = findCircular(1, circle);''
+    bool ans = findCircular(1, circle);
 
     return 0;
 }
