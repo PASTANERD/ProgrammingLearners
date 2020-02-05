@@ -10,19 +10,26 @@ int main(){
     int n,m,k;
     cin >> n >> m >> k;
 
-    int ans1 = 0, ans2 = 0, ans3 = 0;
-    if(k%2 == 1){
-        n -= (k/2 + 1);
-        m -= k/2;
-        ans1 = n/m;
+    int n_2 = n/2;
+    int n_teams = min(n_2, m);
+
+    int reservoir = n + m - n_teams * 3;
+
+    int diff = k - reservoir;
+
+    if(diff <= 0){
+        cout << n_teams;
     }
     else{
+<<<<<<< HEAD
         n -= k/2;
         m -= k/2;
         ans2 = n/m; 
+=======
+        int answer = n_teams - ((diff-1) / 3 + 1);
+        cout << (answer > 0 ? answer : 0);
+>>>>>>> bcc2b91968dd2dd66a8eb11b339701eb515bbd9c
     }
-
-    cout << ans << "\n";
 
     return 0;
 }
