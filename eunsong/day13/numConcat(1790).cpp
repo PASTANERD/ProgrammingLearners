@@ -21,6 +21,14 @@ int main(){
         else if (i <= N && N < 10*i) total+= (N-i+1)*l;
         if(k < ub) break;
     }
+    
+    /*
+     i = 1
+     lb += 0
+     ub = 1 + 9*1*1 - 1 = 9
+     total = 9;
+     
+     */
 
     // cout << "total         : " << total << '\n';
     // cout << "lower bound   : " << lb << '\n';
