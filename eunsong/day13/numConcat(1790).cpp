@@ -15,9 +15,9 @@ int main(){
     int i=1, l=1;
     int lb = 1, ub = 0;
     for(; ; i *=10, l +=1 ){
-        lb += i*9/10*(l-1);
+        lb += i * 9/10 * (l-1);
         ub = lb + 9*i*l - 1;
-        if(10*i <= N) total += 9*i*l;
+        if(10 * i <= N) total += 9 * i * l; 
         else if (i <= N && N < 10*i) total+= (N-i+1)*l;
         if(k < ub) break;
     }
