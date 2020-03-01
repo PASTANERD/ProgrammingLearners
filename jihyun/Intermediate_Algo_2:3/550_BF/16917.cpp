@@ -17,7 +17,6 @@ int main(){
     //case 1 : 양 x개, 후 y개 구매
     ans =  A*X + B*Y;
     
-
     //case 2 : 반반 max(2X, 2Y)개
     ans = min(ans,max(2*X,2*Y)*C);
 
